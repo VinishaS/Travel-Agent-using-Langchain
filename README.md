@@ -23,8 +23,6 @@ An AI-powered travel planning assistant that creates personalized day-by-day iti
 - **Flight & Hotel Data:** Amadeus API
 - **Language:** Python 3.9+
 
-## Run Locally
-
 ### Prerequisites
 
 - Python 3.9+
