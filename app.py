@@ -4,7 +4,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from amadeus import Client, ResponseError
-from airport_codes import get_airport_code, AIRPORT_CODES
+from airport_codes import get_airport_code, AIRPORT_CODES, get_destination_currency, DESTINATION_CURRENCIES
 import os
 from datetime import datetime, timedelta
 
@@ -318,14 +318,17 @@ def search_hotels(city_code, check_in, check_out):
     except ResponseError as e:
         return None
 
-def format_flight_results(flights):
-    """Format flight results into readable text."""
+def format_flight_results(flights, dest_code):
+    """Format flight results into readable text with local currency."""
     if not flights:
         return "Could not fetch flight data. Please check airport codes."
     
+    # Get destination currency
+    local_currency = get_destination_currency(dest_code)
+    
     result = "### ✈️ Flight Options Found:\n\n"
     for i, flight in enumerate(flights[:5], 1):
-        price = flight['price']['total']
+        price = float(flight['price']['total'])
         currency = flight['price']['currency']
         segments = flight['itineraries'][0]['segments']
         
@@ -333,8 +336,14 @@ def format_flight_results(flights):
         arrival = segments[-1]['arrival']['at']
         stops = len(segments) - 1
         
-        result += f"**Option {i}:** {currency} {price}\n"
-        result += f"- Departure: {departure[:16].replace('T', ' ')}\n"
+        # Show price in original currency
+        result += f"**Option {i}:** {currency} {price:.2f}"
+        
+        # Note about local currency
+        if currency != local_currency:
+            result += f" *(local currency: {local_currency})*"
+        
+        result += f"\n- Departure: {departure[:16].replace('T', ' ')}\n"
         result += f"- Arrival: {arrival[:16].replace('T', ' ')}\n"
         result += f"- Stops: {stops if stops > 0 else 'Non-stop'}\n\n"
     
@@ -422,7 +431,7 @@ with st.sidebar:
                         dest_code, 
                         departure_date.strftime("%Y-%m-%d")
                     )
-                    st.session_state.flight_data = format_flight_results(flights)
+                    st.session_state.flight_data = format_flight_results(flights, dest_code)
             elif search_flights_option:
                 st.session_state.flight_data = f"⚠️ Airport codes not found for {origin} or {destination}."
             

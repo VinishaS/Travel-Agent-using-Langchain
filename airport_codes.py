@@ -265,7 +265,7 @@ AIRPORT_CODES = {
     "bangalore": "BLR", "bengaluru": "BLR",
     "chennai": "MAA", "madras": "MAA",
     "kolkata": "CCU", "calcutta": "CCU",
-    "hyderabad india": "HYD",
+    "hyderabad": "HYD",
     "ahmedabad": "AMD",
     "pune": "PNQ",
     "goa": "GOI",
@@ -376,6 +376,163 @@ AIRPORT_CODES = {
     "vanuatu": "VLI",
     "tonga": "TBU",
 }
+# Country/Region to Currency mapping
+DESTINATION_CURRENCIES = {
+    # USA
+    "JFK": "USD", "LAX": "USD", "ORD": "USD", "MIA": "USD", "SFO": "USD",
+    "LAS": "USD", "SEA": "USD", "BOS": "USD", "DEN": "USD", "ATL": "USD",
+    "DFW": "USD", "IAH": "USD", "PHX": "USD", "EWR": "USD", "HNL": "USD",
+    
+    # Europe - Euro
+    "CDG": "EUR", "AMS": "EUR", "FRA": "EUR", "MUC": "EUR", "FCO": "EUR",
+    "MAD": "EUR", "BCN": "EUR", "LIS": "EUR", "ATH": "EUR", "DUB": "EUR",
+    "BRU": "EUR", "VIE": "EUR", "HEL": "EUR", "MXP": "EUR", "VCE": "EUR",
+    
+    # UK
+    "LHR": "GBP", "LGW": "GBP", "MAN": "GBP", "EDI": "GBP", "STN": "GBP",
+    
+    # Japan
+    "HND": "JPY", "NRT": "JPY", "KIX": "JPY", "FUK": "JPY", "CTS": "JPY",
+    
+    # India
+    "DEL": "INR", "BOM": "INR", "BLR": "INR", "MAA": "INR", "CCU": "INR",
+    
+    # UAE
+    "DXB": "AED", "AUH": "AED",
+    
+    # Thailand
+    "BKK": "THB", "HKT": "THB", "CNX": "THB",
+    
+    # Singapore
+    "SIN": "SGD",
+    
+    # Malaysia
+    "KUL": "MYR", "PEN": "MYR",
+    
+    # Indonesia
+    "DPS": "IDR", "CGK": "IDR",
+    
+    # Australia
+    "SYD": "AUD", "MEL": "AUD", "BNE": "AUD", "PER": "AUD",
+    
+    # New Zealand
+    "AKL": "NZD", "WLG": "NZD", "CHC": "NZD",
+    
+    # Canada
+    "YYZ": "CAD", "YVR": "CAD", "YUL": "CAD",
+    
+    # Mexico
+    "MEX": "MXN", "CUN": "MXN",
+    
+    # Brazil
+    "GRU": "BRL", "GIG": "BRL",
+    
+    # South Korea
+    "ICN": "KRW", "GMP": "KRW",
+    
+    # China
+    "PEK": "CNY", "PVG": "CNY", "CAN": "CNY",
+    
+    # Hong Kong
+    "HKG": "HKD",
+    
+    # Taiwan
+    "TPE": "TWD",
+    
+    # Philippines
+    "MNL": "PHP", "CEB": "PHP",
+    
+    # Vietnam
+    "SGN": "VND", "HAN": "VND",
+    
+    # South Africa
+    "JNB": "ZAR", "CPT": "ZAR",
+    
+    # Turkey
+    "IST": "TRY", "AYT": "TRY",
+    
+    # Switzerland
+    "ZRH": "CHF", "GVA": "CHF",
+    
+    # Maldives
+    "MLE": "USD",  # Maldives uses USD for tourism
+    
+    # Qatar
+    "DOH": "QAR",
+    
+    # Saudi Arabia
+    "RUH": "SAR", "JED": "SAR",
+    
+    # Egypt
+    "CAI": "EGP",
+    
+    # Morocco
+    "CMN": "MAD", "RAK": "MAD",
+    
+    # Kenya
+    "NBO": "KES",
+    
+    # Sri Lanka
+    "CMB": "LKR",
+    
+    # Nepal
+    "KTM": "NPR",
+    
+    # Pakistan
+    "ISB": "PKR", "KHI": "PKR",
+    
+    # Bangladesh
+    "DAC": "BDT",
+    
+    # Argentina
+    "EZE": "ARS",
+    
+    # Chile
+    "SCL": "CLP",
+    
+    # Colombia
+    "BOG": "COP",
+    
+    # Peru
+    "LIM": "PEN",
+    
+    # Israel
+    "TLV": "ILS",
+    
+    # Sweden
+    "ARN": "SEK",
+    
+    # Norway
+    "OSL": "NOK",
+    
+    # Denmark
+    "CPH": "DKK",
+    
+    # Poland
+    "WAW": "PLN",
+    
+    # Czech Republic
+    "PRG": "CZK",
+    
+    # Hungary
+    "BUD": "HUF",
+    
+    # Romania
+    "OTP": "RON",
+    
+    # Iceland
+    "KEF": "ISK",
+    
+    # Russia
+    "SVO": "RUB", "LED": "RUB",
+    
+    # Fiji
+    "NAN": "FJD",
+}
+
+def get_destination_currency(airport_code):
+    """Get the local currency for a destination airport."""
+    return DESTINATION_CURRENCIES.get(airport_code, "USD")
 
 def get_airport_code(city):
     """Get airport code for a city. Returns None if not found."""
@@ -383,6 +540,10 @@ def get_airport_code(city):
         return None
     return AIRPORT_CODES.get(city.lower().strip(), None)
 
+def get_destination_currency(airport_code):
+    """Get the local currency for a destination airport."""
+    return DESTINATION_CURRENCIES.get(airport_code, "USD")
+    
 def search_airport_code(query):
     """Search for matching airports based on partial query."""
     if not query:
