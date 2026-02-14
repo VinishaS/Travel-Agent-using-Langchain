@@ -412,7 +412,7 @@ with st.sidebar:
     
     st.markdown('<span class="section-label">Actions</span>', unsafe_allow_html=True)
     if st.button("Plan my trip", use_container_width=True):
-        if origin and destination and interests:
+        if origin and destination:
             st.session_state.trip_planned = True
             st.session_state.chat_history = []
             st.session_state.messages = []
@@ -461,7 +461,7 @@ Please also include a packing checklist for this trip."""
             
             st.session_state.messages.append({"role": "user", "content": first_message})
         else:
-            st.warning("Please fill in origin, destination and interests!")
+            st.warning("Please fill in origin, and destination!")
     
     st.divider()
     if st.button("Start over", use_container_width=True):
