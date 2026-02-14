@@ -41,9 +41,9 @@ An AI-powered travel planning assistant that creates personalized day-by-day iti
    AMADEUS_API_KEY=your-key
    AMADEUS_API_SECRET=your-secret
 ```
-4. Run: ```
+4. Run: 
    `streamlit run app.py`
-   ```
+   
 
 ## Getting API Keys
 
