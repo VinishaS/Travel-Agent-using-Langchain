@@ -4,13 +4,13 @@ An AI-powered travel planning assistant that creates personalized day-by-day iti
 
 ## 🌟 Features
 
-- ** AI-Powered Itineraries** — GPT-4o creates detailed day-by-day travel plans based on your preferences
-- ** Real Flight Data** — Live flight prices and schedules from Amadeus API
-- ** Hotel Recommendations** — Find real hotels at your destination
-- ** Smart Packing Lists** — AI generates a custom packing checklist based on your destination and activities
-- ** Conversational Memory** — Ask follow-up questions like "Add more food spots to Day 2"
-- ** Multi-Currency Support** — See prices in destination's local currency
-- ** 350+ Airports** — Covers all major international airports worldwide
+- **AI-Powered Itineraries** — GPT-4o creates detailed day-by-day travel plans based on your preferences
+- **Real Flight Data** — Live flight prices and schedules from Amadeus API
+- **Hotel Recommendations** — Find real hotels at your destination
+- **Smart Packing Lists** — AI generates a custom packing checklist based on your destination and activities
+- **Conversational Memory** — Ask follow-up questions like "Add more food spots to Day 2"
+- **Multi-Currency Support** — See prices in destination's local currency
+- **350+ Airports** — Covers all major international airports worldwide
 
 ## 🚀 Live Demo
 
@@ -22,8 +22,6 @@ An AI-powered travel planning assistant that creates personalized day-by-day iti
 - **AI/LLM:** LangChain + OpenAI GPT-4o
 - **Flight & Hotel Data:** Amadeus API
 - **Language:** Python 3.9+
-
-## 🏃‍♂️ Run Locally
 
 ### Prerequisites
 
@@ -41,8 +39,9 @@ An AI-powered travel planning assistant that creates personalized day-by-day iti
    AMADEUS_API_KEY=your-key
    AMADEUS_API_SECRET=your-secret
 ```
-4. Run: `streamlit run app.py`
-   ```
+4. Run: 
+   `streamlit run app.py`
+   
 
 ## Getting API Keys
 
