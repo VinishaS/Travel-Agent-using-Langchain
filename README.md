@@ -14,7 +14,7 @@ An AI-powered travel planning assistant that creates personalized day-by-day iti
 
 ## 🚀 Live Demo
 
-[**Try the app here**] (https://your-username-travel-agent-using-langchain.streamlit.app)
+[**Try the app here**] (https://travel-agent-using-langchain-rrtbmcewe6xctmcyvnrxsu.streamlit.app/)
 
 ## 🛠️ Tech Stack
 
